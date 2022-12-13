@@ -8,24 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		22B1CCB4294786610064A022 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CCB3294786610064A022 /* AppDelegate.swift */; };
-		22B1CCB6294786610064A022 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CCB5294786610064A022 /* SceneDelegate.swift */; };
-		22B1CCB8294786610064A022 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CCB7294786610064A022 /* ViewController.swift */; };
+		22B1CCB8294786610064A022 /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CCB7294786610064A022 /* HomeScreenVC.swift */; };
 		22B1CCBB294786610064A022 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B1CCB9294786610064A022 /* Main.storyboard */; };
 		22B1CCBE294786610064A022 /* WeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CCBC294786610064A022 /* WeatherApp.xcdatamodeld */; };
 		22B1CCC0294786650064A022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B1CCBF294786650064A022 /* Assets.xcassets */; };
 		22B1CCC3294786650064A022 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B1CCC1294786650064A022 /* LaunchScreen.storyboard */; };
+		22B1CCCC29478BBD0064A022 /* HomeScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CCCB29478BBD0064A022 /* HomeScreenVM.swift */; };
+		22B1CCCE29478BCA0064A022 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CCCD29478BCA0064A022 /* Models.swift */; };
+		22B1CCD029478BE60064A022 /* Manger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CCCF29478BE60064A022 /* Manger.swift */; };
+		22B1CCD5294828F90064A022 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CCD3294828F90064A022 /* WeatherTableViewCell.swift */; };
+		22B1CCD6294828F90064A022 /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B1CCD4294828F90064A022 /* WeatherTableViewCell.xib */; };
+		22B1CCDD29482BF40064A022 /* HourlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CCDB29482BF40064A022 /* HourlyTableViewCell.swift */; };
+		22B1CCDE29482BF40064A022 /* HourlyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B1CCDC29482BF40064A022 /* HourlyTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		22B1CCB0294786610064A022 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B1CCB3294786610064A022 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		22B1CCB5294786610064A022 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		22B1CCB7294786610064A022 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		22B1CCB7294786610064A022 /* HomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenVC.swift; sourceTree = "<group>"; };
 		22B1CCBA294786610064A022 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22B1CCBD294786610064A022 /* WeatherApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherApp.xcdatamodel; sourceTree = "<group>"; };
 		22B1CCBF294786650064A022 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22B1CCC2294786650064A022 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22B1CCC4294786650064A022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22B1CCCB29478BBD0064A022 /* HomeScreenVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenVM.swift; sourceTree = "<group>"; };
+		22B1CCCD29478BCA0064A022 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		22B1CCCF29478BE60064A022 /* Manger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manger.swift; sourceTree = "<group>"; };
+		22B1CCD3294828F90064A022 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
+		22B1CCD4294828F90064A022 /* WeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherTableViewCell.xib; sourceTree = "<group>"; };
+		22B1CCDB29482BF40064A022 /* HourlyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTableViewCell.swift; sourceTree = "<group>"; };
+		22B1CCDC29482BF40064A022 /* HourlyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourlyTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +70,8 @@
 		22B1CCB2294786610064A022 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				22B1CCCA29478B820064A022 /* MVVM */,
 				22B1CCB3294786610064A022 /* AppDelegate.swift */,
-				22B1CCB5294786610064A022 /* SceneDelegate.swift */,
-				22B1CCB7294786610064A022 /* ViewController.swift */,
 				22B1CCB9294786610064A022 /* Main.storyboard */,
 				22B1CCBF294786650064A022 /* Assets.xcassets */,
 				22B1CCC1294786650064A022 /* LaunchScreen.storyboard */,
@@ -68,6 +79,37 @@
 				22B1CCBC294786610064A022 /* WeatherApp.xcdatamodeld */,
 			);
 			path = WeatherApp;
+			sourceTree = "<group>";
+		};
+		22B1CCCA29478B820064A022 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				22B1CCD2294828D30064A022 /* HourlyCollectionCell */,
+				22B1CCD1294828B40064A022 /* WeatherCell */,
+				22B1CCB7294786610064A022 /* HomeScreenVC.swift */,
+				22B1CCCB29478BBD0064A022 /* HomeScreenVM.swift */,
+				22B1CCCD29478BCA0064A022 /* Models.swift */,
+				22B1CCCF29478BE60064A022 /* Manger.swift */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
+		22B1CCD1294828B40064A022 /* WeatherCell */ = {
+			isa = PBXGroup;
+			children = (
+				22B1CCD3294828F90064A022 /* WeatherTableViewCell.swift */,
+				22B1CCD4294828F90064A022 /* WeatherTableViewCell.xib */,
+			);
+			path = WeatherCell;
+			sourceTree = "<group>";
+		};
+		22B1CCD2294828D30064A022 /* HourlyCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				22B1CCDB29482BF40064A022 /* HourlyTableViewCell.swift */,
+				22B1CCDC29482BF40064A022 /* HourlyTableViewCell.xib */,
+			);
+			path = HourlyCollectionCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +170,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B1CCD6294828F90064A022 /* WeatherTableViewCell.xib in Resources */,
+				22B1CCDE29482BF40064A022 /* HourlyTableViewCell.xib in Resources */,
 				22B1CCC3294786650064A022 /* LaunchScreen.storyboard in Resources */,
 				22B1CCC0294786650064A022 /* Assets.xcassets in Resources */,
 				22B1CCBB294786610064A022 /* Main.storyboard in Resources */,
@@ -141,10 +185,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B1CCD029478BE60064A022 /* Manger.swift in Sources */,
+				22B1CCCC29478BBD0064A022 /* HomeScreenVM.swift in Sources */,
+				22B1CCDD29482BF40064A022 /* HourlyTableViewCell.swift in Sources */,
+				22B1CCD5294828F90064A022 /* WeatherTableViewCell.swift in Sources */,
 				22B1CCBE294786610064A022 /* WeatherApp.xcdatamodeld in Sources */,
-				22B1CCB8294786610064A022 /* ViewController.swift in Sources */,
+				22B1CCB8294786610064A022 /* HomeScreenVC.swift in Sources */,
+				22B1CCCE29478BCA0064A022 /* Models.swift in Sources */,
 				22B1CCB4294786610064A022 /* AppDelegate.swift in Sources */,
-				22B1CCB6294786610064A022 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +268,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -274,7 +322,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -299,6 +347,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -327,6 +376,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
