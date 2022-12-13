@@ -22,8 +22,6 @@ struct CurrentWeather: Codable {
     let time: Int
     let summary: String
     let icon: String
-    let nearestStormDistance: Int
-    let nearestStormBearing: Int
     let precipIntensity: Int
     let precipProbability: Int
     let temperature: Double
@@ -55,7 +53,6 @@ struct DailyWeatherEntry: Codable {
     let moonPhase: Double
     let precipIntensity: Float
     let precipIntensityMax: Float
-    let precipIntensityMaxTime: Int
     let precipProbability: Double
     let precipType: String?
     let temperatureHigh: Double

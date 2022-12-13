@@ -9,5 +9,5 @@ import Foundation
 
 
 class HomeScreenVM {
-    var models = [Weather]()
+    var models = [DailyWeatherEntry]()
 }

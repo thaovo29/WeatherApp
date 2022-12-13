@@ -87,12 +87,10 @@
 		22B1CCCA29478B820064A022 /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				22B1CCE7294894DD0064A022 /* Manager */,
+				22B1CCE6294894C50064A022 /* ViewModels */,
+				22B1CCE4294894850064A022 /* Views */,
 				22B1CCE1294890F30064A022 /* Models */,
-				22B1CCD2294828D30064A022 /* HourlyCollectionCell */,
-				22B1CCD1294828B40064A022 /* WeatherCell */,
-				22B1CCB7294786610064A022 /* HomeScreenVC.swift */,
-				22B1CCCB29478BBD0064A022 /* HomeScreenVM.swift */,
-				22B1CCCF29478BE60064A022 /* Manger.swift */,
 			);
 			path = MVVM;
 			sourceTree = "<group>";
@@ -121,6 +119,40 @@
 				22B1CCE2294891240064A022 /* WeatherModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		22B1CCE4294894850064A022 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				22B1CCE52948949C0064A022 /* ViewControllers */,
+				22B1CCD2294828D30064A022 /* HourlyCollectionCell */,
+				22B1CCD1294828B40064A022 /* WeatherCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		22B1CCE52948949C0064A022 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				22B1CCB7294786610064A022 /* HomeScreenVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		22B1CCE6294894C50064A022 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				22B1CCCB29478BBD0064A022 /* HomeScreenVM.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		22B1CCE7294894DD0064A022 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				22B1CCCF29478BE60064A022 /* Manger.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
