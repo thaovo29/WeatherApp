@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreLocation
-class HomeScreenVC: UIViewController {
+class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
     var vm : HomeScreenVM?
     var locationMagager = CLLocationManager()
     var currentLocation: CLLocation?
@@ -20,23 +20,11 @@ class HomeScreenVC: UIViewController {
         table.delegate = self
         table.dataSource = self
     }
-
-    
-}
-
-extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vm?.models.count ?? 0
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("show me")
+        setupLocation()
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
-    
-    
-}
-
-extension HomeScreenVC: CLLocationManagerDelegate{
     func setupLocation(){
         locationMagager.delegate = self
         locationMagager.requestWhenInUseAuthorization()
@@ -54,6 +42,25 @@ extension HomeScreenVC: CLLocationManagerDelegate{
         guard let currentLocation = currentLocation else {return}
         let long = currentLocation.coordinate.longitude
         let lat = currentLocation.coordinate.latitude
-        print("\(long) | \(lat)")
+        let url = "https://api.darksky.net/forecast/ddcc4ebb2a7c9930b90d9e59bda0ba7a/\(lat),\(long)?exclude=[flags,minutely]"
+        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
+            // validation
+            guard let data = data, error == nil else {
+                print("something went wrong")
+                return
+            }
+        })
     }
+}
+
+extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    
 }
