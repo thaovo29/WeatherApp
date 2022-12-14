@@ -32,9 +32,9 @@ class WeatherTableViewCell: UITableViewCell {
     func configure(with model: DailyWeatherEntry){
         self.highTempLable.textAlignment = .center
         self.lowTempLable.textAlignment = .center
-        self.lowTempLable.text = "\(Int(Int(model.temperatureLow)-32)*5/9)ºC"
-        self.highTempLable.text = "\(Int(Int(model.temperatureHigh)-32)*5/9)ºC"
-        self.dayLable.text = getDayForDate(Date(timeIntervalSince1970: Double( model.time)))
+        self.lowTempLable.text = "\(Manager.shared.changeDegreeFromFToC(degree: model.temperatureLow))ºC"
+        self.highTempLable.text = "\(Manager.shared.changeDegreeFromFToC(degree: model.temperatureLow))ºC"
+        self.dayLable.text = Manager.shared.getDayForDate(Date(timeIntervalSince1970: Double( model.time)))
         
         let icon = model.icon.lowercased()
         if icon.contains("cloud"){
@@ -48,13 +48,5 @@ class WeatherTableViewCell: UITableViewCell {
         }
     }
     
-    func getDayForDate(_ date: Date?) -> String {
-            guard let inputDate = date else {
-                return ""
-            }
-
-            let formatter = DateFormatter()
-            formatter.dateFormat = "EEEE" // Monday
-            return formatter.string(from: inputDate)
-        }
+    
 }
