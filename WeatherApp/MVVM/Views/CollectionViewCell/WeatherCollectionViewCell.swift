@@ -30,8 +30,14 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     }
     func configure(with model: HourlyWeatherEntry){
         self.lblTemp.text = "\(Manager.shared.changeDegreeFromFToC(degree: model.temperature))ºC"
-       
-        self.imgIcon.image = UIImage(named: "sun")
+        let status = model.summary
+        if status.contains("Cloud") {
+            self.imgIcon.image = UIImage(named: "cloud")
+        } else if status.contains("Rain"){
+            self.imgIcon.image = UIImage(named: "rain")
+        } else {
+            self.imgIcon.image = UIImage(named: "sun")
+        }
         self.lblHour.text = Manager.shared.getHourForDate(date: Date(timeIntervalSince1970: Double( model.time)))
     }
 }

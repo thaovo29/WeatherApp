@@ -37,10 +37,10 @@ class WeatherTableViewCell: UITableViewCell {
         self.dayLable.text = Manager.shared.getDayForDate(Date(timeIntervalSince1970: Double( model.time)))
         
         let icon = model.icon.lowercased()
-        if icon.contains("cloud"){
+        if icon.contains("Cloud"){
             self.imgIcon.image = UIImage(named: "cloud")
 
-        } else if icon.contains("rain"){
+        } else if icon.contains("Rain"){
             self.imgIcon.image = UIImage(named: "rain")
 
         } else {
