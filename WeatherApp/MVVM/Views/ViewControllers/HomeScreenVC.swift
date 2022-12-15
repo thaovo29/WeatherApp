@@ -10,9 +10,6 @@ import CoreLocation
 class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
     var vm = HomeScreenVM()
     var locationMagager = CLLocationManager()
-    var currentLocation: CLLocation?
-    var current : CurrentWeather?
-    var hourlyModels = [HourlyWeatherEntry]()
     @IBOutlet weak var table: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,48 +29,31 @@ class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
         locationMagager.requestWhenInUseAuthorization()
         locationMagager.startUpdatingLocation()
     }
+    func reloadData(){
+        self.table.reloadData()
+        self.table.tableHeaderView = createTableHeader()
+    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if !locations.isEmpty, currentLocation == nil {
-            currentLocation = locations.first
+        if !locations.isEmpty, vm.currentLocation == nil {
+            vm.currentLocation = locations.first
             locationMagager.stopUpdatingLocation()
-            requestWeatherForLocation()
+            vm.callBack = {[weak self] in
+                DispatchQueue.main.async {
+                    self?.reloadData()
+                }
+            }
+            vm.requestWeatherForLocation()
         }
     }
     
-    func requestWeatherForLocation() {
-        guard let currentLocation = currentLocation else {return}
-        let long = currentLocation.coordinate.longitude
-        let lat = currentLocation.coordinate.latitude
-        print("\(long) | \(lat)")
-        let url = "https://api.darksky.net/forecast/ddcc4ebb2a7c9930b90d9e59bda0ba7a/\(lat),\(long)?exclude=[flags,minutely]"
-        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
-            // validation
-            guard let data = data, error == nil else {
-                print("something went wrong")
-                return
-            }
-            var json: WeatherResponse?
-            do {
-                json = try JSONDecoder().decode(WeatherResponse.self, from: data)
-            }
-            catch{
-                print("error \(error)")
-            }
-            
-            guard let result = json else {return}
-            let entries = result.daily.data
-            self.vm.models.append(contentsOf: entries)
-            let currentWeather = result.currently
-            self.current = currentWeather
-            
-            self.hourlyModels = result.hourly.data
-            
-            DispatchQueue.main.async {
-                self.table.reloadData()
-                self.table.tableHeaderView = self.createTableHeader()
-            }
-        }).resume()
+    func makeShadow(view: UILabel){
+        view.layer.shadowColor = UIColor.white.cgColor
+        view.layer.shadowRadius = 2.0
+        view.layer.shadowOpacity = 0.70
+        view.layer.shadowOffset = CGSize(width: 2, height: 2)
+        view.layer.masksToBounds = false
     }
+    
     func createTableHeader() -> UIView{
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height / 3))
         headerView.backgroundColor = UIColor(red: 255/255, green: 178/255, blue: 0, alpha: 1)
@@ -85,7 +65,7 @@ class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
         let background = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height / 3))
         let iconImage = UIImageView(frame: CGRect(x: (headerView.frame.size.width-20)/2, y: timeLabel.frame.size.height + 10, width: (headerView.frame.size.width-20)/2, height: headerView.frame.size.height * 2 / 4))
         
-        let status = self.current?.summary
+        let status = self.vm.current?.summary
         
         if status?.contains("Cloud") ?? false{
             iconImage.image = UIImage(named: "cloud")
@@ -122,41 +102,23 @@ class HomeScreenVC: UIViewController, CLLocationManagerDelegate {
         timeLabel.textColor = UIColor(red: 12/255.0, green: 65/255.0, blue: 117/255.0, alpha: 1)
         locationLabel.text = "Current Location"
         timeLabel.text = "Today"
-        guard let currentWeather = self.current else {
+        guard let currentWeather = self.vm.current else {
             return UIView()
         }
         
         tempLabel.text = "\(Manager.shared.changeDegreeFromFToC(degree: currentWeather.temperature))°"
         tempLabel.font = UIFont(name: "Helvetica-Bold", size: 80)
-        summaryLabel.text = self.current?.summary
+        summaryLabel.text = self.vm.current?.summary
         locationLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         summaryLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         timeLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         summaryLabel.numberOfLines = 0
         
-        locationLabel.layer.shadowColor = UIColor.white.cgColor
-        locationLabel.layer.shadowRadius = 2.0
-        locationLabel.layer.shadowOpacity = 0.70
-        locationLabel.layer.shadowOffset = CGSize(width: 2, height: 2)
-        locationLabel.layer.masksToBounds = false
+        makeShadow(view: locationLabel)
+        makeShadow(view: tempLabel)
+        makeShadow(view: summaryLabel)
+        makeShadow(view: timeLabel)
         
-        tempLabel.layer.shadowColor = UIColor.white.cgColor
-        tempLabel.layer.shadowRadius = 2.0
-        tempLabel.layer.shadowOpacity = 0.70
-        tempLabel.layer.shadowOffset = CGSize(width: 2, height: 2)
-        tempLabel.layer.masksToBounds = false
-        
-        summaryLabel.layer.shadowColor = UIColor.white.cgColor
-        summaryLabel.layer.shadowRadius = 2.0
-        summaryLabel.layer.shadowOpacity = 0.70
-        summaryLabel.layer.shadowOffset = CGSize(width: 2, height: 2)
-        summaryLabel.layer.masksToBounds = false
-        
-        timeLabel.layer.shadowColor = UIColor.white.cgColor
-        timeLabel.layer.shadowRadius = 2.0
-        timeLabel.layer.shadowOpacity = 0.70
-        timeLabel.layer.shadowOffset = CGSize(width: 2, height: 2)
-        timeLabel.layer.masksToBounds = false
         
         iconImage.layer.shadowColor = UIColor.white.cgColor
         iconImage.layer.shadowRadius = 2.0
@@ -174,10 +136,8 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            // 1 cell that is collectiontableviewcell
             return 1
         }
-        // return models count
         return vm.models.count
     }
     
@@ -185,8 +145,8 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: HourlyTableViewCell.identifier, for: indexPath) as! HourlyTableViewCell
-            cell.configure(with: hourlyModels)
-            cell.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
+            cell.configure(with: vm.hourlyModels)
+            
             return cell
         }
         

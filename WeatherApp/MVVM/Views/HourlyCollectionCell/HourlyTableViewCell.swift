@@ -18,7 +18,7 @@ class HourlyTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
         collectionView.register(WeatherCollectionViewCell.nib(), forCellWithReuseIdentifier: WeatherCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
-        
+        self.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

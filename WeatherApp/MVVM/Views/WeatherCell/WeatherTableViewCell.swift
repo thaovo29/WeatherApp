@@ -33,7 +33,7 @@ class WeatherTableViewCell: UITableViewCell {
         self.highTempLable.textAlignment = .center
         self.lowTempLable.textAlignment = .center
         self.lowTempLable.text = "\(Manager.shared.changeDegreeFromFToC(degree: model.temperatureLow))ºC"
-        self.highTempLable.text = "\(Manager.shared.changeDegreeFromFToC(degree: model.temperatureLow))ºC"
+        self.highTempLable.text = "\(Manager.shared.changeDegreeFromFToC(degree: model.temperatureHigh))ºC"
         self.dayLable.text = Manager.shared.getDayForDate(Date(timeIntervalSince1970: Double( model.time)))
         
         let icon = model.icon.lowercased()
